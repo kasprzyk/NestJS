@@ -9,6 +9,10 @@ export class TasksService {
   getAllTasks(): Task[] {
     return this.tasks;
   }
+  getTaskById(id: string): Task {
+    console.log(this.tasks);
+    return this.tasks.find((task) => task.id === id);
+  }
   createTask(createTaskDto: CreateTaskDto) {
     const { title, description } = createTaskDto;
     const task: Task = {
@@ -19,5 +23,8 @@ export class TasksService {
     };
     this.tasks.push(task);
     return task;
+  }
+  deleteTask(id: string) {
+    this.tasks.find((task) => task.id !== id);
   }
 }
